@@ -603,7 +603,7 @@ void mfsk::afc()
 		sigsearch = 0;
 	}
 
-	if (staticburst)
+	if (staticburst || !/*progStatus.*/afconoff)
 		return;
 	if (metric < 5.0)
 		return;
@@ -944,7 +944,7 @@ int mfsk::tx_process()
 	return 0;
 }
 
-int mfsk::getsymlen(){
+int mfsk::getbuflen(){
 	return symlen;
 }
 

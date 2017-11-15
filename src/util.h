@@ -31,6 +31,11 @@
 extern "C" {
 #endif
 
+#define FFT_LEN		8192
+#define SC_SMPLRATE	8000
+#define WFBLOCKSIZE 512
+
+
 #include <inttypes.h>
 
 #ifndef powerof2

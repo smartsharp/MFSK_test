@@ -47,6 +47,85 @@ modem *mfsk128_modem = 0;
 modem *mfsk64l_modem = 0;
 modem *mfsk128l_modem = 0;
 
+modem *psk31_modem = 0;
+modem *psk63_modem = 0;
+modem *psk63f_modem = 0;
+modem *psk125_modem = 0;
+modem *psk250_modem = 0;
+modem *psk500_modem = 0;
+modem *psk1000_modem = 0;
+
+modem *qpsk31_modem = 0;
+modem *qpsk63_modem = 0;
+modem *qpsk125_modem = 0;
+modem *qpsk250_modem = 0;
+modem *qpsk500_modem = 0;
+
+modem *_8psk125_modem = 0;
+modem *_8psk250_modem = 0;
+modem *_8psk500_modem = 0;
+modem *_8psk1000_modem = 0;
+modem *_8psk1200_modem = 0;
+modem *_8psk1333_modem = 0;
+
+modem *_8psk125fl_modem = 0;
+modem *_8psk125f_modem = 0;
+modem *_8psk250fl_modem = 0;
+modem *_8psk250f_modem = 0;
+modem *_8psk500f_modem = 0;
+modem *_8psk1000f_modem = 0;
+modem *_8psk1200f_modem = 0;
+modem *_8psk1333f_modem = 0;
+
+modem *psk125r_modem = 0;
+modem *psk250r_modem = 0;
+modem *psk500r_modem = 0;
+modem *psk1000r_modem = 0;
+
+modem *psk800_c2_modem = 0;
+modem *psk800r_c2_modem = 0;
+modem *psk1000_c2_modem = 0;
+modem *psk1000r_c2_modem = 0;
+
+modem *psk63r_c4_modem = 0;
+modem *psk63r_c5_modem = 0;
+modem *psk63r_c10_modem = 0;
+modem *psk63r_c20_modem = 0;
+modem *psk63r_c32_modem = 0;
+
+modem *psk125r_c4_modem = 0;
+modem *psk125r_c5_modem = 0;
+modem *psk125r_c10_modem = 0;
+modem *psk125_c12_modem = 0;
+modem *psk125r_c12_modem = 0;
+modem *psk125r_c16_modem = 0;
+
+modem *psk250r_c2_modem = 0;
+modem *psk250r_c3_modem = 0;
+modem *psk250r_c5_modem = 0;
+modem *psk250_c6_modem = 0;
+modem *psk250r_c6_modem = 0;
+modem *psk250r_c7_modem = 0;
+
+modem *psk500_c2_modem = 0;
+modem *psk500_c4_modem = 0;
+
+modem *psk500r_c2_modem = 0;
+modem *psk500r_c3_modem = 0;
+modem *psk500r_c4_modem = 0;
+
+modem *olivia_modem = 0;
+modem *olivia_4_250_modem = 0;
+modem *olivia_8_250_modem = 0;
+modem *olivia_4_500_modem = 0;
+modem *olivia_8_500_modem = 0;
+modem *olivia_16_500_modem = 0;
+modem *olivia_8_1000_modem = 0;
+modem *olivia_16_1000_modem = 0;
+modem *olivia_32_1000_modem = 0;
+modem *olivia_64_2000_modem = 0;
+
+
 double modem::frequency = 1000;
 double modem::tx_frequency = 1000;
 bool   modem::freqlock = false;
@@ -65,6 +144,11 @@ modem::modem()
 	reverse = false;
 	cap = CAP_RX | CAP_TX;
 	bandwidth = 0.0;
+	afconoff = true;
+	sqlonoff = true;
+	pskpilot = false;
+	psk8DCDShortFlag = false;
+	pilot_power = -30.0;
 }
 
 // modem types CW and RTTY do not use the base init()
@@ -190,4 +274,6 @@ void modem::ModulateXmtr(double *buffer, int len)
 		return;
 	}*/
 }
-
+int modem::getbuflen(){
+	return 512;
+}

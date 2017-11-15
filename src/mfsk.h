@@ -36,11 +36,6 @@
 #include "mfskvaricode.h"
 //#include "mbuffer.h"
 
-#define GET_TX_CHAR_NODATA -1	// no data available
-#define GET_TX_CHAR_ETX -3	// end of transmission requested
-
-
-
 #define	MFSKSampleRate		8000
 
 // 1 ms per pixel
@@ -196,7 +191,7 @@ public:
 	int		rx_process(const double *buf, int len);
 	int		tx_process();
 	void	shutdown();
-	int    getsymlen();
+	virtual int    getbuflen();
 };
 
 extern void put_rx_char(unsigned int data);
